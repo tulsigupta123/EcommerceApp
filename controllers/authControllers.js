@@ -1,0 +1,111 @@
+import UserModel from "../models/userModel.js";
+import {hashPassword,comparePassword} from "../helpers/authHelpers.js";
+import jwt from "jsonwebtoken"
+
+export const registerController = async(req,res) => {
+    try{
+       const {name,email,password,phone,address} = req.body;
+
+    // Validations -
+    if(!name){
+         return res.send({error: "Name is required"})
+    }
+    if(!email){
+        return res.send({error: "Email is required"})
+   }
+   if(!password){
+    return res.send({error: "Password is required"})
+   }
+   if(!phone){
+    return res.send({error: "Phone is required"})
+   }
+   if(!address){
+    return res.send({error: "Address is required"})
+   }
+
+    // Check Existing user-
+    const existingUser = await UserModel.findOne({email});
+    if(existingUser){
+        return res.status(200).send({
+            success:true,
+            message:"Already registered. Please login."
+        })
+    }
+
+    // Check Existing phone number-
+    const existingPhoneNumber = await UserModel.findOne({phone});
+    if(existingPhoneNumber){
+        return res.status(200).send({
+            success:true,
+            message:"Already registered. Please login."
+        })
+    }
+
+    // User Registration-
+     const hashedPassword = await hashPassword(password);
+    // Saving details -
+     const user = await new UserModel({name,email,password:hashedPassword,phone,address}).save();
+     res.status(200).send({
+        success:true,
+        message:"Registered successfully",
+        user,
+    })
+
+    }catch(error){
+        console.log(error);
+     res.status(400).send({
+        success: false,
+        message:"Error in registration",
+        error
+     })
+    }
+}
+
+export const loginController = async(req,res) =>{
+try{
+const{email,password} = req.body;
+// Validation-
+if(!email || !password){
+    return res.status(404).send({
+        success:false,
+        message:"Invalid login details"
+    })
+}
+// email vaildation-
+const user = await UserModel.findOne({email})
+if(!user){
+    return res.status(404).send({
+        success:false,
+        message:"User is not registered"
+    })
+}
+// Password validation-
+const match = await comparePassword(password,user.password)
+if(!match){
+    return res.status(404).send({
+        success:false,
+        message:"Invalid login details"
+    })
+}
+// Generating token-
+const token = await jwt.sign({_id:user._id},process.env.jwt_secretkey,{expiresIn:"10d"})
+console.log(token);
+res.status(200).send({
+    success:true,
+    message:"Login successfully",
+    user:{
+        name:user.name,
+        email:user.email,
+        phone:user.phone,
+        address:user.address
+    },
+    token
+})
+}catch(error){
+ res.status(400).send({
+    success:false,
+    message:"Error in login",
+    error
+})
+}
+}
