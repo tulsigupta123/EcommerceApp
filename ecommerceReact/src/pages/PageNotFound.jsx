@@ -1,14 +1,12 @@
 import React from 'react'
 import Layout from 'c:/Ecommerce-App/ecommerceReact/src/components/layouts/Layout.jsx'
-
-const App = () => {
+const PageNotFound = () => {
   return (
-    <>
-    <Layout>
-    <h1>App for ecommerce</h1>
+  <><Layout>
+   PageNotFound
     </Layout>
     </>
   )
 }
 
-export default App
+export default PageNotFound

@@ -1,14 +1,13 @@
 import React from 'react'
 import Layout from 'c:/Ecommerce-App/ecommerceReact/src/components/layouts/Layout.jsx'
 
-const App = () => {
+const Contact = () => {
   return (
-    <>
-    <Layout>
-    <h1>App for ecommerce</h1>
+    <><Layout>
+    <div>Contact</div>
     </Layout>
     </>
   )
 }
 
-export default App
+export default Contact
