@@ -3,5 +3,59 @@
   padding: 0;
   box-sizing: border-box;
 }
-/* font-family: 'Open Sans', sans-serif;
-font-family: 'Poppins', sans-serif; */
+
+/* navbar css */
+.navbar{
+  font-family: 'Poppins', sans-serif;
+  text-transform: uppercase;
+  font-size: 17px;
+  line-height: 26px;
+  box-shadow: 0 8px 6px -6px #808080;
+  border-bottom: #808080 !important;
+ 
+}
+.navbar-nav{
+  text-decoration: none;
+}
+.navbar-nav li{
+  margin: 10px;
+} 
+.navbar ul a{
+  text-decoration: none;
+  color: #808080;
+}
+.active{
+ border-bottom: 2px solid black;
+}
+.nav-brand{
+  font-family:'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  word-spacing: 20px;
+}
+/* Footer css */
+.footer{
+  color: #ffff;
+  background-color: #000000;
+  padding: 25px;
+}
+.footer a{
+  color: white;
+  text-decoration: none;
+  padding: 7px;
+}
+.footer a:hover{
+  background-color: #808080;
+  border-radius: 5px;
+}
+/* Page not found css */
+.pnf{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.pnf-title{
+  font-size: 50px;
+}
+

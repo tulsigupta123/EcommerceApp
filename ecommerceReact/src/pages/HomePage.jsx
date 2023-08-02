@@ -3,8 +3,8 @@ import Layout from 'c:/Ecommerce-App/ecommerceReact/src/components/layouts/Layou
 const HomePage = () => {
   return (
     <>
-    <Layout>
-    <div>HomePage</div>\
+    <Layout  title ={"Online Shopping Site in India"}>
+    <div>HomePage</div>
     </Layout>
     </>
   )
