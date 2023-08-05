@@ -35,7 +35,7 @@ if (res && res.data.success){
 <input type="email" className="form-control" id="exampleInputEmail1" value ={email} onChange = {(event) => {setEmail(event.target.value)}}/>
 
 <label for="exampleInputEmail1" className="form-label">Enter your favourite food</label>
-<input type="text" className="form-control" id="exampleInputEmail1" value ={answer} onChange = {(event) => {setAnswer(event.target.value)}}/>
+<input type="text" className="form-control" id="exampleInputAnswer1" value ={answer} onChange = {(event) => {setAnswer(event.target.value)}}/>
  
 <label for="exampleInputPassword1" className="form-label">Enter new password</label>
 <input type="password" className="form-control" id="exampleInputPassword1" value ={newpassword} onChange = {(event) => {setNewPassword(event.target.value)}}/>

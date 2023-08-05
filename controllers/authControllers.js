@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken"
 
 export const registerController = async(req,res) => {
     try{
-       const {name,email,password,phone,address} = req.body;
+       const {name,email,password,phone,address,answer} = req.body;
 
     // Validations -
     if(!name){
@@ -21,6 +21,9 @@ export const registerController = async(req,res) => {
    }
    if(!address){
     return res.send({message: "Address is required"})
+   }
+   if(!answer){
+    return res.send({message: "Answer is required"})
    }
 
     // Check Existing user-
@@ -44,7 +47,7 @@ export const registerController = async(req,res) => {
     // User Registration-
      const hashedPassword = await hashPassword(password);
     // Saving details -
-     const user = await new UserModel({name,email,password:hashedPassword,phone,address}).save();
+     const user = await new UserModel({name,email,password:hashedPassword,phone,address,answer}).save();
      res.status(200).send({
         success:true,
         message:"Registered successfully",
