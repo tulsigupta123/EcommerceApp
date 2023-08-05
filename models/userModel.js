@@ -23,6 +23,10 @@ const userSchema = new mongoose.Schema({
     address:{
         type:String,
         required:[true,"Please enter address"]
+    },
+    answer:{
+        type:String,
+        required:true
     }
 },{timestamps:true});
 

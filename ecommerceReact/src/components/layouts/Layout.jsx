@@ -1,9 +1,10 @@
 import React from 'react'
 import Header from './Header.jsx'
 import Footer from './Footer.jsx'
-// import LocalMallIcon from '@mui/icons-material/LocalMall';
+import { Toaster } from 'react-hot-toast';
 import {Helmet} from "react-helmet";
-const Layout = (props,description,title,keywords,author) => {
+
+const Layout = ({children,description,title,keywords,author}) => {
   return (
     <>
     <Helmet>
@@ -15,7 +16,8 @@ const Layout = (props,description,title,keywords,author) => {
    </Helmet>
     <Header />
     <main style = {{minHeight : "75vh"}}>
-    {props.children}
+   < Toaster/>
+    {children}
     </main>
     <Footer />
     </>
@@ -23,9 +25,9 @@ const Layout = (props,description,title,keywords,author) => {
 }
 Layout.defaultProps ={
   description: "Mern Stack Project",
-  title: "Shop Now " ,
+  title: "ShopNow " ,
   keywords: "mongodb,express,react,nodejs" ,
   author:"Tulsi"
-}
+};
 
 export default Layout

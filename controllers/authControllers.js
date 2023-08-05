@@ -8,26 +8,26 @@ export const registerController = async(req,res) => {
 
     // Validations -
     if(!name){
-         return res.send({error: "Name is required"})
+         return res.send({message: "Name is required"})
     }
     if(!email){
-        return res.send({error: "Email is required"})
+        return res.send({message: "Email is required"})
    }
    if(!password){
-    return res.send({error: "Password is required"})
+    return res.send({message: "Password is required"})
    }
    if(!phone){
-    return res.send({error: "Phone is required"})
+    return res.send({message: "Phone is required"})
    }
    if(!address){
-    return res.send({error: "Address is required"})
+    return res.send({message: "Address is required"})
    }
 
     // Check Existing user-
     const existingUser = await UserModel.findOne({email});
     if(existingUser){
         return res.status(200).send({
-            success:true,
+            success:false,
             message:"Already registered. Please login."
         })
     }
@@ -107,5 +107,48 @@ res.status(200).send({
     message:"Error in login",
     error
 })
+}
+}
+
+// forgotPasswordController -
+export const forgotPasswordController = async(req,res) => {
+try{
+const{email,answer,newPassword} = req.body;
+if(!email){
+    res.status(400).send({
+    message:"Email is required"
+    })
+}
+if(!answer){
+    res.status(400).send({
+        message:"Answer is required"
+    })
+}
+if(!newPassword){
+    res.status(400).send({
+        message:"New Password is required"
+    })
+}
+// Check-
+const user = await UserModel.findOne({email,answer})
+// Validation-
+if(!user){
+    return res.status(404).send({
+        success:false,
+        message:"Wrong email or answer"
+    })
+}
+    const hashed = await hashPassword(newPassword)
+    await UserModel.findByIdAndUpdate(user._id,{password:hashed})
+    res.status(200).send({
+        success:true,
+        message: "Password Reset Successfully"
+    })
+
+}catch(error){
+    res.status(500).send({
+        success:false,
+        message:error.message
+    })
 }
 }

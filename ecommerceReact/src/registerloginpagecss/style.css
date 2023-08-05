@@ -1,0 +1,36 @@
+.register-login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height:130vh;
+    background-image: linear-gradient(0deg,#ffdee9 0%,#b5cccf 100%);
+  }
+  .login-only{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height:80vh;
+    background-image: linear-gradient(0deg,#ffdee9 0%,#b5cccf 100%);
+  }
+  .register-login form{
+    border:1px solid #000000;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow:#808080 0px 5px 15px;
+    background-color: #fff;
+    font-size: 17px;
+  }
+  .btn-register{
+    background-color: #fb641b;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.2);
+    border: none;
+    color: #fff;
+    padding: 5px 100px;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+    z-index: 20;
+  }
+  

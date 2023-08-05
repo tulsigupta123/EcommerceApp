@@ -1,7 +1,18 @@
-import React from 'react'
-import {NavLink,Link} from 'react-router-dom'
+import React from 'react';
+import {NavLink,Link} from 'react-router-dom';
 import LocalMallIcon from '@mui/icons-material/LocalMall';
+import {useAuth} from '../../context/authContext.jsx';
+import toast from 'react-hot-toast';
 const Header = () => {
+  const[auth,setAuth] = useAuth();
+
+  const handleLogout = () => {
+    setAuth({
+      ...auth,user: null , token : ""
+    });
+    localStorage.removeItem("auth");
+    toast.success("Logout Successfully")
+  }
   return (
     <>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -10,7 +21,7 @@ const Header = () => {
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-      <Link to = "/" class="navbar-brand" >Shop Online <LocalMallIcon/></Link>
+      <Link to = "/" class="navbar-brand" >ShopNow<LocalMallIcon/></Link>
       <ul class="navbar-nav  ms-auto  mb-2 mb-lg-0">
         <li class="nav-item"> 
           <NavLink to = "/" class="nav-link" >Home</NavLink>
@@ -18,12 +29,27 @@ const Header = () => {
         <li class="nav-item">
           <NavLink to = "/category" class="nav-link" >Category</NavLink>
         </li>
-        <li class="nav-item">
-          <NavLink to = "/register" class="nav-link" >Register</NavLink>
-        </li>
-        <li class="nav-item">
-          <NavLink to = "/login" class="nav-link" >Login</NavLink>
-        </li>
+        {/* <li class="nav-item">
+     <NavLink to = "/register" class="nav-link" >Register</NavLink>
+   </li>
+   <li class="nav-item">
+     <NavLink to = "/login" class="nav-link" >Login</NavLink>
+   </li> */}
+         {!auth.user?
+          (<>
+     <li class="nav-item">
+     <NavLink to = "/register" class="nav-link" >Register</NavLink>
+   </li>
+   <li class="nav-item">
+     <NavLink to = "/login" class="nav-link" >Login</NavLink>
+   </li>
+   </>)
+        :
+          (<li class="nav-item">
+     <NavLink onClick = {handleLogout} to = "/login" class="nav-link" >Logout</NavLink>
+   </li>)
+        } 
+   
         <li class="nav-item">
           <NavLink to = "/cart" class="nav-link" >Cart(0)</NavLink>
         </li>
