@@ -15,7 +15,7 @@ dotenv.config();
 const app = express();
 
 // adding port info-
-const port =  process.env.port|| 8080;
+const port =  process.env.PORT|| 8080;
 
 // middlewares-
 app.use(express.json());
@@ -24,13 +24,6 @@ app.use(cors());
 
 // Routes-
 app.use('/api/v1/auth',authRoutes);
-
-// app.get("/",(req,res)=>{
-//     res.send("hello express it's new project");
-// })
-// app.listen(port,()=>{
-//     console.log(`Server is listening at port ${port}`);
-// })
 
 
 app.get("/", (req, res) => {

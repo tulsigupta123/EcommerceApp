@@ -1,5 +1,5 @@
 import UserModel from "../models/userModel.js";
-import {hashPassword,comparePassword} from "../helpers/authHelpers.js";
+import {hashPassword,comparePassword} from "../middlewares/helpers/authHelpers.js";
 import jwt from "jsonwebtoken"
 
 export const registerController = async(req,res) => {
@@ -100,7 +100,8 @@ res.status(200).send({
         name:user.name,
         email:user.email,
         phone:user.phone,
-        address:user.address
+        address:user.address,
+        role:user.role
     },
     token
 })

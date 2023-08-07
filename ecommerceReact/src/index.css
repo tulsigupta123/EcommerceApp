@@ -9,9 +9,10 @@
   font-family: 'Poppins', sans-serif;
   text-transform: uppercase;
   font-size: 15px;
-  line-height: 26px;
+  line-height: 16px;
   box-shadow: 0 8px 6px -6px #808080;
   border-bottom: #808080 !important;
+  padding: 1px;
  
 }
 .navbar-nav{
@@ -30,7 +31,7 @@
 .nav-brand{
   font-family:'Poppins', sans-serif;
   font-weight: 700;
-  font-size: 17px;
+  font-size: 14px;
   word-spacing: 20px;
 }
 /* Footer css */

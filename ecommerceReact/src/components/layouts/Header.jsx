@@ -21,41 +21,39 @@ const Header = () => {
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-      <Link to = "/" class="navbar-brand" >ShopNow<LocalMallIcon/></Link>
+      <Link to = "/" className="navbar-brand" >ShopNow<LocalMallIcon/></Link>
       <ul class="navbar-nav  ms-auto  mb-2 mb-lg-0">
         <li class="nav-item"> 
-          <NavLink to = "/" class="nav-link" >Home</NavLink>
+          <NavLink to = "/" className="nav-link dropdown-item" >Home</NavLink>
         </li>
         <li class="nav-item">
-          <NavLink to = "/category" class="nav-link" >Category</NavLink>
+          <NavLink to = "/category" className="nav-link dropdown-item" >Category</NavLink>
         </li>
-        {/* <li class="nav-item">
-     <NavLink to = "/register" class="nav-link" >Register</NavLink>
-   </li>
-   <li class="nav-item">
-     <NavLink to = "/login" class="nav-link" >Login</NavLink>
-   </li> */}
-         {!auth.user?
-          (<>
-     <li class="nav-item">
-     <NavLink to = "/register" class="nav-link" >Register</NavLink>
-   </li>
-   <li class="nav-item">
-     <NavLink to = "/login" class="nav-link" >Login</NavLink>
-   </li>
-   </>)
-        :
-          (<li class="nav-item">
-     <NavLink onClick = {handleLogout} to = "/login" class="nav-link" >Logout</NavLink>
-   </li>)
-        } 
-   
-        <li class="nav-item">
-          <NavLink to = "/cart" class="nav-link" >Cart(0)</NavLink>
-        </li>
-    
-      </ul>
      
+         {!auth.user?
+          <>
+     <li class="nav-item">
+     <NavLink to = "/register" className="nav-link " >Register</NavLink>
+   </li>
+   <li class="nav-item">
+     <NavLink to = "/login" className="nav-link dropdown-item" >Login</NavLink>
+   </li>
+   </>
+        :
+          <> <li className="nav-item dropdown dropdown-item">
+        <NavLink className="nav-link dropdown-toggle dropdown-item"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        {/* {auth?.user?.name} */}USER
+        </NavLink>
+        <ul className="dropdown-menu">
+          <li><NavLink to = {`/dashboard/${auth?.user?.role === 1 ? "admin" : "user"}` }className="dropdown-item nav-link" >Dashboard</NavLink></li>
+          <li><NavLink onClick = {handleLogout} to = "/login" className="dropdown-item" >Logout</NavLink></li>
+        </ul>
+        </li> </>}
+        <li className="nav-item">
+          <NavLink to = "/cart" className="nav-link dropdown-item" >Cart(0)</NavLink>
+        </li>
+        </ul>
+        
     </div>
   </div>
 </nav></>

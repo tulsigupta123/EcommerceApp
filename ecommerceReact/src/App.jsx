@@ -10,13 +10,18 @@ import Register from './pages/Auth/Register.jsx'
 import Login from './pages/Auth/Login.jsx'
 import PrivateRoutes from '../../ecommerceReact/src/components/RoutesPrivate/PrivateRoutes'
 import ForgotPassword from './pages/Auth/ForgotPassword.jsx'
+import AdminRoutes from './components/RoutesPrivate/AdminRoutes.jsx'
+import AdminDashboard from './pages/admin/AdminDashboard.jsx'
 const App = () => {
   return (
     <>
    <Routes>
     <Route  path = "/" element= {<HomePage/>}  />
     <Route exact path = "/dashboard" element= {<PrivateRoutes/>}  />
-    <Route exact path = "" element= {<Dashboard/>}  />
+    <Route exact path = "user" element= {<Dashboard/>}  />
+    <Route/>
+    <Route exact path = "/dashboard" element= {<AdminRoutes/>}  />
+    <Route exact path = "admin" element= {<AdminDashboard/>}  />
     <Route/>
     <Route exact path = "/register" element= {<Register/>}  />
     <Route exact path = "/login" element= {<Login/>}  />
