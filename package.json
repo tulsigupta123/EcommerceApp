@@ -6,14 +6,9 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "type": "module",
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "ecommerceReact":"npm run --prefix ./ecommerceReact",
-    "concurrent": "concurrently \"npm run dev\" \"npm run ecommerceReact\""
   },
-  "author": "Tulsi Gupta",
-  "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.0",
     "concurrently": "^8.2.0",

@@ -1,6 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
-// import connectToDb from "./config/db.js";
+import connectToDb from "./config/db.js";
 import morgan from "morgan";
 import authRoutes from "./routes/authRoutes.js";
 import cors from "cors";
@@ -9,7 +9,7 @@ import cors from "cors";
 dotenv.config();
 
 // connecting to db-
-// connectToDb();
+connectToDb();
 
 // creating app-
 const app = express();
