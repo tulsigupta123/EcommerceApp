@@ -17,11 +17,11 @@ const App = () => {
     <>
    <Routes>
     <Route  path = "/" element= {<HomePage/>}  />
-    <Route exact path = "/dashboard" element= {<PrivateRoutes/>}  />
-    <Route exact path = "user" element= {<Dashboard/>}  />
+    <Route  path = "/dashboard" element= {<PrivateRoutes/>}/>
+    <Route  path = "user" element= {<Dashboard/>}  />
     <Route/>
-    <Route exact path = "/dashboard" element= {<AdminRoutes/>}  />
-    <Route exact path = "admin" element= {<AdminDashboard/>}  />
+    <Route path = "/dashboard" element= {<AdminRoutes/>}/>
+    <Route path = "admin" element= {<AdminDashboard/>}  />
     <Route/>
     <Route exact path = "/register" element= {<Register/>}  />
     <Route exact path = "/login" element= {<Login/>}  />
@@ -30,7 +30,6 @@ const App = () => {
     <Route exact path = "/policy" element = {<Policy/>}  />
     <Route exact path = "/forgot-password" element = {<ForgotPassword/>}  />
     <Route path = "/*" element = {<PageNotFound/>}  />
-    
    </Routes>
     </>
   )

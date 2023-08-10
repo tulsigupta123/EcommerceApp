@@ -17,7 +17,7 @@ const Login = () => {
     const handleSubmit = async(event) =>{
       event.preventDefault();
       try{
-const res = await axios.post(`${process.env.REACT_APP_API}/api/v1/auth/login`,{email,password})
+const res = await axios.post(`http://localhost:8082/api/v1/auth/login`,{email,password})
 if (res && res.data.success){
   toast.success(res.data && res.data.message)
   setAuth({
@@ -32,6 +32,7 @@ if (res && res.data.success){
 }
       }catch(error){
         toast.error("Something went wrong")
+        console.log(error);
       }
      
     }
@@ -39,8 +40,8 @@ if (res && res.data.success){
     <Layout title ={ "Login to your account"}>
       <div className="register-login login-only">  
         <h1>Login</h1>  <br />
-        <form onSubmit = {handleSubmit}>
-  <div class="mb-3">
+        <form method = "post" onSubmit = {handleSubmit}>
+  <div className="mb-3">
     <label for="exampleInputEmail1" className="form-label">Email address</label>
     <input type="email" className="form-control" id="exampleInputEmail1" value ={email} onChange = {(event) => {setEmail(event.target.value)}}/>
      
@@ -50,7 +51,7 @@ if (res && res.data.success){
 
   </div>
 
-  <button type="submit" class="btn-register">Login</button>
+  <button type="submit" className="btn-register">Login</button>
 </form>
         </div>
     </Layout>

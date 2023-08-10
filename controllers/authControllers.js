@@ -1,6 +1,10 @@
 import UserModel from "../models/userModel.js";
 import {hashPassword,comparePassword} from "../middlewares/helpers/authHelpers.js";
+import dotenv from "dotenv";
 import jwt from "jsonwebtoken"
+
+// configure env-
+dotenv.config();
 
 export const registerController = async(req,res) => {
     try{
@@ -97,6 +101,7 @@ res.status(200).send({
     success:true,
     message:"Login successfully",
     user:{
+        id:user._id,
         name:user.name,
         email:user.email,
         phone:user.phone,

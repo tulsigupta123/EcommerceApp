@@ -8,8 +8,8 @@ const Footer = () => {
     <h4>All Rights Reserved :copyright ShopNow.com</h4>
     <p className="text-center mt-3">
     <Link to = "/" class="-link" >Home</Link>
-    <Link to = "/contact" class="-link" >Contact Us</Link>
-    <Link to = "/policy" class="-link" >Privacy Policy</Link>
+    <Link to = "/contact" className="-link" >Contact Us</Link>
+    <Link to = "/policy" className="-link" >Privacy Policy</Link>
     </p>
     </div>
     </div>

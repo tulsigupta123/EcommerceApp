@@ -30,7 +30,7 @@ if (res && res.data.success){
     <Layout title = {"Forgot password"}><div className="register-login login-only">  
     <h1>Reset Password</h1>  <br />
     <form onSubmit = {handleSubmit}>
-<div class="mb-3">
+<div className="mb-3">
 <label for="exampleInputEmail1" className="form-label">Enter email address</label>
 <input type="email" className="form-control" id="exampleInputEmail1" value ={email} onChange = {(event) => {setEmail(event.target.value)}}/>
 
@@ -42,7 +42,7 @@ if (res && res.data.success){
 
 </div>
 
-<button type="submit" class="btn-register">Reset</button>
+<button type="submit" className="btn-register">Reset</button>
 </form>
     </div></Layout>
   )

@@ -15,27 +15,27 @@ const Header = () => {
   }
   return (
     <>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+    <nav className="navbar navbar-expand-lg bg-body-tertiary">
+  <div className="container-fluid">
+    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span className="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+    <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
       <Link to = "/" className="navbar-brand" >ShopNow<LocalMallIcon/></Link>
-      <ul class="navbar-nav  ms-auto  mb-2 mb-lg-0">
-        <li class="nav-item"> 
+      <ul className="navbar-nav  ms-auto  mb-2 mb-lg-0">
+        <li className="nav-item"> 
           <NavLink to = "/" className="nav-link dropdown-item" >Home</NavLink>
         </li>
-        <li class="nav-item">
+        <li className="nav-item">
           <NavLink to = "/category" className="nav-link dropdown-item" >Category</NavLink>
         </li>
      
          {!auth.user?
           <>
-     <li class="nav-item">
+     <li className="nav-item">
      <NavLink to = "/register" className="nav-link " >Register</NavLink>
    </li>
-   <li class="nav-item">
+   <li className="nav-item">
      <NavLink to = "/login" className="nav-link dropdown-item" >Login</NavLink>
    </li>
    </>

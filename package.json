@@ -7,8 +7,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "dev": "nodemon server.js",
+    "dev": "nodemon server.js"
   },
+  "author": "Tulsi Gupta",
+  "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.0",
     "concurrently": "^8.2.0",
