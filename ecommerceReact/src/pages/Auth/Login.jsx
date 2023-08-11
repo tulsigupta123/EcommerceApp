@@ -39,8 +39,8 @@ if (res && res.data.success){
   return (
     <Layout title ={ "Login to your account"}>
       <div className="register-login login-only">  
-        <h1>Login</h1>  <br />
-        <form method = "post" onSubmit = {handleSubmit}>
+        <h1>Login</h1>  
+        <form method = "POST" onSubmit = {handleSubmit}>
   <div className="mb-3">
     <label for="exampleInputEmail1" className="form-label">Email address</label>
     <input type="email" className="form-control" id="exampleInputEmail1" value ={email} onChange = {(event) => {setEmail(event.target.value)}}/>

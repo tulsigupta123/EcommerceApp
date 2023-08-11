@@ -10,11 +10,7 @@ const PrivateRoutes = () => {
     const[auth,setAuth] = useAuth();
     useEffect(()=>{
       const authCheck = async () => {
-      const res = await axios.get('api/v1/auth/user-auth',{
-        headers:{
-          "Authorization" : auth ?.token
-        }
-      })
+      const res = await axios.get('api/v1/auth/user-auth')
       if (res.data.ok) {
         setOk(true)
       }else{

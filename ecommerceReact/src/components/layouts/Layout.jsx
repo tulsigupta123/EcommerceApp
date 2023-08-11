@@ -9,10 +9,12 @@ const Layout = ({children,description,title,keywords,author}) => {
     <>
     <Helmet>
    <meta charSet="utf-8" />
-   <title>{title} </title>
+   {/* <title> {title} </title>  */}
+   <meta name="title" content={title}/>  
   <meta name="description" content={description}/>  
   <meta name="keywords" content={keywords}/> 
   <meta name="author" content={author}/> 
+ 
    </Helmet>
     <Header />
     <main style = {{minHeight : "75vh"}}>

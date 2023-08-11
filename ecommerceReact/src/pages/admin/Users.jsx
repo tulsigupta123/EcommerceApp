@@ -1,18 +1,17 @@
 import React from 'react'
 import Layout from '../../components/layouts/Layout.jsx'
 import AdminMenu from '../../components/layouts/AdminMenu.jsx'
-
-const CreateCategory = () => {
+const Users = () => {
   return (
     <>
-    <Layout title = {"Dashboard-create-category"}>
+    <Layout title = {"Dashboard-all users"}>
     <div className="container-fluid m-3 p-3">
     <div className="row">
         <div className="col-md-3">
             <AdminMenu/>
         </div>
         <div className="col-md-9">
-        <h1>Create Category</h1>
+        <h1>All users</h1>
     </div>
     </div>
     </div>
@@ -21,4 +20,4 @@ const CreateCategory = () => {
   )
 }
 
-export default CreateCategory
+export default Users

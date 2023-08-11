@@ -36,16 +36,16 @@ const Header = () => {
      <NavLink to = "/register" className="nav-link " >Register</NavLink>
    </li>
    <li className="nav-item">
-     <NavLink to = "/login" className="nav-link dropdown-item" >Login</NavLink>
+     <NavLink to = "/login" className="nav-link " >Login</NavLink>
    </li>
    </>
         :
-          <> <li className="nav-item dropdown dropdown-item">
-        <NavLink className="nav-link dropdown-toggle dropdown-item"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
-        {/* {auth?.user?.name} */}USER
+          <> <li className="nav-item dropdown ">
+        <NavLink className="nav-link dropdown-toggle "  role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        {auth?.user?.name}
         </NavLink>
         <ul className="dropdown-menu">
-          <li><NavLink to = {`/dashboard/${auth?.user?.role === 1 ? "admin" : "user"}` }className="dropdown-item nav-link" >Dashboard</NavLink></li>
+          <li><NavLink to = {`/dashboard/${auth?.user?.role === 1 ? "admin" : "user"}` }className="dropdown-item " >Dashboard</NavLink></li>
           <li><NavLink onClick = {handleLogout} to = "/login" className="dropdown-item" >Logout</NavLink></li>
         </ul>
         </li> </>}

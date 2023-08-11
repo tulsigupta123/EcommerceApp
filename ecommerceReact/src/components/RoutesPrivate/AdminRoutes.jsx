@@ -1,5 +1,5 @@
 import React from 'react'
-
+import {useAuth} from '../../context/authContext.jsx'
 const AdminRoutes = () => {
     const[ok,setOk] = useState(false);
     const[auth,setAuth] = useAuth();
