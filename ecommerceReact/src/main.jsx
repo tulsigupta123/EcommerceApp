@@ -5,7 +5,7 @@ import './index.css'
 import './registerloginpagecss/style.css'
 import {BrowserRouter} from 'react-router-dom' 
 import {AuthProvider} from './context/authContext.jsx'
-
+import 'antd/dist/reset.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <AuthProvider>
