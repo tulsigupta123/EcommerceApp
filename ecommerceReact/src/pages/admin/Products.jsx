@@ -13,6 +13,7 @@ const getAllProducts = async() => {
 try{
 const{data} = await axios.get('http://localhost:8082/api/v1/product/get-products')
 setProducts(data.products)
+products
 }catch(error){
   console.log(error);
   toast.error('Something went wrong')

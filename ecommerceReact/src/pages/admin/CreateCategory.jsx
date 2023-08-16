@@ -34,7 +34,7 @@ const handleSubmit= async(e)=>{
     try{
      const{data} = await axios.get('http://localhost:8082/api/v1/category/get-category')
      if(data?.success){
-      setCategories(data?.getAllCategory)
+      setCategories(data?.category)
      }
     }catch(error){
       console.log(error);
