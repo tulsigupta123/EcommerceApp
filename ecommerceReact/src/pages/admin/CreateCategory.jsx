@@ -10,7 +10,7 @@ const CreateCategory = () => {
   const[categories,setCategories] = useState([])
  const[name,setName] = useState("")
 const[visible,setVisible] = useState(false)
-const[selected,setSelected]= useState("")
+const[selected,setSelected]= useState(null)
 const[updatedName,setUpdatedName]= useState("")
 //Handle Form-
 const handleSubmit= async(e)=>{
@@ -30,7 +30,7 @@ const handleSubmit= async(e)=>{
 }
 
   // Get All Categories-
-  const getAllCategories = async(req,res)=>{
+  const getAllCategories = async()=>{
     try{
      const{data} = await axios.get('http://localhost:8082/api/v1/category/get-category')
      if(data?.success){

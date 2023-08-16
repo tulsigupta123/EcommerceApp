@@ -7,59 +7,60 @@ import {Select} from 'antd'
 import{useNavigate} from 'react-router-dom'
 
 const{Option} = Select;
-const CreateProduct = () => {
-  const navigate = useNavigate();
-  const[categories,setCategories] = useState([])
-  const[category,setCategory] = useState("")
-  const[name,setName] = useState("")
-  const[description,setDescription] = useState("")
-  const[price,setPrice] = useState("")
-  const[quantity,setQuantity] = useState("")
-  const[shipping,setShipping] = useState("")
-  const[photo,setPhoto] = useState("")
-
-  // Get All Categories-
-  const getAllCategories = async(req,res)=>{
-    try{
-     const{data} = await axios.get('http://localhost:8082/api/v1/category/get-category')
-     if(data?.success){
-      setCategories(data?.getAllCategory)
-     }
-    }catch(error){
-      console.log(error);
-      toast.error("Something went wrong in getting category")
+const UpdateProduct = () => {
+    const navigate = useNavigate();
+    const[categories,setCategories] = useState([])
+    const[category,setCategory] = useState("")
+    const[name,setName] = useState("")
+    const[description,setDescription] = useState("")
+    const[price,setPrice] = useState("")
+    const[quantity,setQuantity] = useState("")
+    const[shipping,setShipping] = useState("")
+    const[photo,setPhoto] = useState("")
+  
+    // Get All Categories-
+    const getAllCategories = async(req,res)=>{
+      try{
+       const{data} = await axios.get('http://localhost:8082/api/v1/category/get-category')
+       if(data?.success){
+        setCategories(data?.category)
+       }
+      }catch(error){
+        console.log(error);
+        toast.error("Something went wrong in getting category")
+      }
     }
+    useEffect(()=>{
+      getAllCategories();
+       },[])
+  
+    // Create Product Function-
+    const handleCreate = async(e)=>{
+  e.preventDefault();
+  try{
+  const productData = new FormData()
+  productData.append("name",name)
+  productData.append("description",description)
+  productData.append("price",price)
+  productData.append("quantity",quantity)
+  productData.append("photo",photo)
+  productData.append("category",category)
+  const{data}= await axios.post('http://localhost:8082/api/v1/product/update-product',productData)
+  if(data.success){
+    toast.error(data?.message)
+  }else{
+    toast.success("Product Updated Successfully")
+    navigate('/dashboard/admin/products')
   }
-  useEffect(()=>{
-    getAllCategories();
-     },[])
+  }catch(error){
+    console.log(error);
+    toast.error("Something went wrong")
+  }
+    }
 
-  // Create Product Function-
-  const handleCreate = async(e)=>{
-e.preventDefault();
-try{
-const productData = new FormData()
-productData.append("name",name)
-productData.append("description",description)
-productData.append("price",price)
-productData.append("quantity",quantity)
-productData.append("photo",photo)
-productData.append("category",category)
-const{data}= await axios.post('http://localhost:8082/api/v1/product/create-product',productData)
-if(data.success){
-  toast.error(data?.message)
-}else{
-  toast.success("Product Created Successfully")
-  navigate('/dashboard/admin/products')
-}
-}catch(error){
-  console.log(error);
-  toast.error("Something went wrong")
-}
-  }
   return (
     <>
-    <Layout title = {"Dashboard-create-product"}>
+    <Layout title = {"Dashboard-update-product"}>
     <div className="container-fluid m-3 p-3">
     <div className="row">
         <div className="col-md-3">
@@ -105,7 +106,7 @@ if(data.success){
               </Select>
               </div>
               <div className="mb-3">
-                <button className="btn btn-primary" onClick={handleCreate}>Create Product</button>
+                <button className="btn btn-primary" onClick={handleCreate}>Update Product</button>
               </div>
           </div>
         </div>
@@ -117,4 +118,4 @@ if(data.success){
   )
 }
 
-export default CreateProduct
+export default UpdateProduct

@@ -4,7 +4,7 @@ import Layout from 'c:/Ecommerce-App/ecommerceReact/src/components/layouts/Layou
 const Contact = () => {
   return (
     <><Layout  title ={ "Contact us"}>
-    <div><img src = "https://www.icicilombard.com/docs/default-source/assets/customer-support/images/health_screen.png" className = "contact-img" alt = "Contact Us"/></div>
+    <div><img src = "https://www.icicilombard.com/docs/default-source/assets/customer-support/images/health_screen.png" className = "contact-img img-responsive" alt = "Contact Us"/></div>
     </Layout>
     </>
   )

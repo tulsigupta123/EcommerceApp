@@ -24,9 +24,9 @@ if(!category){
 if(!quantity){
     return res.send({message:"Quantity is required"})
 }
-if(photo && photo.size > 1000000){
-    return res.send({message:"photo is required and should be less than 1 mb"})
-}
+// if(!photo || photo.size > 1000000){
+//     return res.send({message:"photo is required and should be less than 1 mb"})
+// }
 
 const createProduct = new productModel({...req.fields,slug:slugify(name)})
 if(photo){
@@ -144,9 +144,9 @@ export const updateProductController = async(req,res)=>{
            if(!quantity){
                return res.send({message:"Quantity is required"})
            }
-           if(photo && photo.size > 1000000){
-               return res.send({message:"photo is required and should be less than 1 mb"})
-           }
+        //    if(photo && photo.size > 1000000){
+        //        return res.send({message:"photo is required and should be less than 1 mb"})
+        //    }
            
            const {id} = req.params
            const updateProduct = new productModel.findByIdAndUpdate({id},{...req.fields,slug:slugify(name)},{new:true})

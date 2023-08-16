@@ -81,4 +81,8 @@ margin-top: 20px;
   text-decoration: none;
 }
 
+.product-link{
+  list-style: none !important;
+  color: #000000 !important;
+}
 

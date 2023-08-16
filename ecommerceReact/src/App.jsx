@@ -14,9 +14,11 @@ import AdminRoutes from './components/RoutesPrivate/AdminRoutes.jsx'
 import AdminDashboard from './pages/admin/AdminDashboard.jsx'
 import CreateCategory from './pages/admin/CreateCategory.jsx'
 import CreateProduct from './pages/admin/CreateProduct.jsx'
+import UpdateProduct from './pages/admin/UpdateProduct.jsx'
 import Users from './pages/admin/Users.jsx'
 import Orders from './pages/user/Orders.jsx'
 import Profile from './pages/user/Profile.jsx'
+import Products from './pages/admin/Products.jsx'
 const App = () => {
   return (
     <>
@@ -29,8 +31,10 @@ const App = () => {
 
     <Route  path = "admin/dashboard" element= {<AdminRoutes/>}/>
     <Route path = "dashboard/admin" element= {<AdminDashboard/>}  />
+    <Route exact path = "dashboard/admin/products" element={<Products/>} />
     <Route exact path = "/dashboard/admin/create-category" element = {<CreateCategory/>}  />
     <Route exact path = "/dashboard/admin/create-product" element = {<CreateProduct/>}  />
+    <Route exact path = "/dashboard/admin/product/:slug" element = {<UpdateProduct/>}  />
     <Route exact path = "/dashboard/admin/users" element = {<Users/>}  />
     <Route/>
     <Route exact path = "/register" element= {<Register/>}  />
