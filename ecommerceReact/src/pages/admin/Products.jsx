@@ -12,7 +12,7 @@ const[products,setProducts] = useState([])
 const getAllProducts = async() => {
 try{
 const{data} = await axios.get('http://localhost:8082/api/v1/product/get-products')
-setProducts(data.products)
+setProducts(data.getProduct)
 products
 }catch(error){
   console.log(error);

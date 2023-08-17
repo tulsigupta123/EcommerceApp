@@ -67,10 +67,10 @@ const UpdateProduct = () => {
   productData.append("category",category)
   const{data}= await axios.put(`http://localhost:8082/api/v1/product/update-product/${id}`,productData)
   if(data.success){
-    toast.error(data?.message)
-  }else{
     toast.success("Product Updated Successfully")
     navigate('/dashboard/admin/products')
+  }else{
+    toast.error(data?.message)
   }
   }catch(error){
     console.log(error);
