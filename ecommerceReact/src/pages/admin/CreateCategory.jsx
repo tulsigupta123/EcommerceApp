@@ -103,7 +103,6 @@ toast.error('Something went wrong')
   </thead>
   <tbody>
     {categories?.map((c)=>(
-      <>
      <tr>
       <td key ={c._id}>{c.name}</td>
       <td>
@@ -111,7 +110,6 @@ toast.error('Something went wrong')
         <button className="btn btn-danger ms-2" onClick={()=>{handleDelete(c._id)}}>Delete</button>
       </td>
       </tr> 
-      </>
     )
       )}
     

@@ -23,7 +23,7 @@ const CreateProduct = () => {
     try{
      const{data} = await axios.get('http://localhost:8082/api/v1/category/get-category')
      if(data?.success){
-      setCategories(data?.category)
+      setCategories(data?.getAllCategory)
      }
     }catch(error){
       console.log(error);

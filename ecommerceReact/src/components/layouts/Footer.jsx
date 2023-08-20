@@ -5,7 +5,7 @@ const Footer = () => {
     <>
     <div className = "footer">
       <div className = "text-center">
-    <h4>All Rights Reserved :copyright ShopNow.com</h4>
+    <h4>All Rights Reserved © ShopNow.com</h4>
     <p className="text-center mt-3">
     <Link to = "/" class="-link" >Home</Link>
     <Link to = "/contact" className="-link" >Contact Us</Link>

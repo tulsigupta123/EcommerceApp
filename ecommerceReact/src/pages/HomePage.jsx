@@ -38,38 +38,42 @@ const HomePage = () => {
 
   // Filter by category-
   const handleFilter = (value,id) => {
-  let all = [...checked]
+  let all = [...checked];
   if(value){
-    all.push(id)
+    all.push(id);
   }else{
-    all = all.filter((c)=>c!==id)
+    all = all.filter((c)=>c!==id);
   }
-  setChecked(all)
+  setChecked(all);
   }
   useEffect(()=>{
-    if(!checked.length || !radio.length)getAllProducts();
+    if(!checked.length || !radio.length){
+      getAllProducts();
+    }
   },[checked.length,radio.length])
 
   useEffect(()=>{
-    if(checked.length || radio.length)filterProduct();
+    if(checked.length || radio.length){
+      filterProduct();
+    }
   },[checked,radio])
 
   // Get Filtered Products-
   const filterProduct = async()=>{
     try{
-  const {data} = await axios.put('http://localhost:8082/api/v1/product/product-filters',{checked,radio})
+  const {data} = await axios.post('http://localhost:8082/api/v1/product/product-filters',{checked,radio})
   setProducts(data?.products)
     }catch(error){
-      console.log(error);
+      console.log(`Error is: ${error}`);
     }
   }
   return (
    
     <Layout  title ={"Online Shopping Site in India"}>
   <div className="row mt-2">
-    <div className="col-md-3 ">
-      <h5 className="text-center">Filter By Category</h5>
-      <div className="d-flex flex-column">
+    <div className="col-md-3">
+      <h6 className="m-3">Filter By Category</h6>
+      <div className="d-flex flex-column m-3">
         {categories?.map((c)=>(
         <Checkbox key={c._id}  onChange={(e)=>handleFilter(e.target.checked,c._id)}>
           {c.name}
@@ -78,8 +82,8 @@ const HomePage = () => {
       </div>
  
        {/* Filter by Price-  */}
-      <h5 className="text-center mt-3">Filter By Price</h5>
-      <div className="d-flex flex-column">
+      <h6 className= "m-3">Filter By Price</h6>
+      <div className="d-flex flex-column m-3">
         <Radio.Group onChange={(e)=>setRadio(e.target.value)}>
         {Prices?.map((p)=>(
 <div key={p._id}>
@@ -88,17 +92,20 @@ const HomePage = () => {
         ))}
         </Radio.Group>
       </div>
-    </div>
+      <div className="d-flex flex-column">
+        <button className="btn btn-primary" onClick={()=>window.location.reload()}>RESET FILTERS</button>
+      </div>
+    </div> 
     <div className="col-md-9">
       <h1 className="text-center">All Products</h1>
       <div className="d-flex flex-wrap">
-         {products?.map((p)=>(
-          <div className="card m-3" style={{width:"17rem"} } >
-          <img src={`http://localhost:8082/api/v1/product/product-photo/${p._id}`} className="card-img-top" alt={p.name}/>
+         {products?.map((pro)=>(
+          <div className="card m-1" style={{width:"17rem"}} key={pro._id} >
+          <img src={`http://localhost:8082/api/v1/product/product-photo/${pro._id}`} className="card-img-top" alt={pro.name} />
           <div className="card-body">
-            <h5 className="card-title">{p.name}</h5>
-            <p className="card-text">{p.description.substring(0,30)}</p>
-            <p className="card-text">₹{p.price}</p>
+            <h5 className="card-title">{pro.name}</h5>
+            <p className="card-text">{pro.description.substring(0,50)}...</p>
+            <p className="card-text">₹{pro.price}</p>
             <NavLink  className="btn btn-primary ms-1">More Details</NavLink>
             <NavLink  className="btn btn-primary ms-1">Add to Cart</NavLink>
           </div>

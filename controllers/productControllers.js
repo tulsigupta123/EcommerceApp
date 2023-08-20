@@ -183,12 +183,13 @@ if(radio.length){
         $gte:radio[0],
         $lte:radio[1]
     }
+}
 const products = await productModel.find(args)
 res.status(200).send({
     success:true,
     products
 })
-}
+
 }catch(error){
     console.log(error);
     res.status(400).send({

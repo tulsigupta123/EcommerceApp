@@ -23,14 +23,14 @@ const UpdateProduct = () => {
     //  Get Single Product-
     const getSingleProduct = async() => {
       try{
-      const{data} = await axios.get(`api/v1/product/get-product/${params.slug}`)
-      setName(data.product.name)
-      setDescription(data.product.description)
-      setPrice(data.product.price)
-      setQuantity(data.product.quantity)
-      setId(data.product._id)
-      setShipping(data.product.shipping)
-      setCategory(data.product.category._id)
+      const{data} = await axios.get(`http://localhost:8082/api/v1/product/get-products/${params.slug}`)
+      setName(data.getSingleProduct.name)
+      setDescription(data.getSingleProduct.description)
+      setPrice(data.getSingleProduct.price)
+      setQuantity(data.getSingleProduct.quantity)
+      setId(data.getSingleProduct._id)
+      setShipping(data.getSingleProduct.shipping)
+      setCategory(data.getSingleProduct.category._id)
       }catch(error){
       console.log(error);
       }
@@ -43,7 +43,7 @@ const UpdateProduct = () => {
       try{
        const{data} = await axios.get('http://localhost:8082/api/v1/category/get-category')
        if(data?.success){
-        setCategories(data?.category)
+        setCategories(data?.getAllCategory)
        }
       }catch(error){
         console.log(error);
@@ -100,7 +100,7 @@ toast.success("Product Deleted Successfully")
             <AdminMenu/>
         </div>
         <div className="col-md-9">
-        <h1>Create Product</h1>
+        <h1>Update Product</h1>
         <div className="m-1 w-75">
           <Select bordered={false} placeholder="Select a category" size="large" showSearch className= "form-select mb-3" onChange={(value)=>{setCategory(value)}} value={category}>
          {categories?.map(c=>(
@@ -120,7 +120,7 @@ toast.success("Product Deleted Successfully")
               </div>
             ) : (
               <div className="text-center">
-                <img src = {`api/v1/product/product-photo/${id}`} alt="product photo" height={"200px"} className="img img-responsive" />
+                <img src = {`http://localhost:8082/api/v1/product/product-photo/${id}`} alt="product photo" height={"200px"} className="img img-responsive" />
               </div>
             )}
             <div className="mb-3 mt-2">
@@ -137,7 +137,7 @@ toast.success("Product Deleted Successfully")
             </div>
             <div className="mb-3 mt-2">
               <Select
-              bordered={false} placeholder="Select shipping" size="large"  className="form-select mb-3" showSearch onChange={(value)=> setShipping(value)} value={shipping?"Yes":"No"}>
+              bordered={false} placeholder="Select shipping" size="large"  className="form-select mb-3" showSearch onChange={(value)=> setShipping(value)} value={setShipping?"Yes":"No"}>
               <Option value="0">No</Option>
               <Option value="1">Yes</Option>
               </Select>
