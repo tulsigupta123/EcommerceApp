@@ -19,11 +19,13 @@ import Users from './pages/admin/Users.jsx'
 import Orders from './pages/user/Orders.jsx'
 import Profile from './pages/user/Profile.jsx'
 import Products from './pages/admin/Products.jsx'
+import Search from './pages/SearchPage.jsx'
 const App = () => {
   return (
     <>
    <Routes>
     <Route  path = "/" element= {<HomePage/>}  />
+    <Route  path = "/search" element= {<Search/>}  />
     <Route  path = "/dashboard" element= {<PrivateRoutes/>}/>
     <Route  path = "/dashboard/user" element= {<Dashboard/>}  />
      <Route exact path = "/dashboard/user/orders" element= {<Orders/>}  />

@@ -95,7 +95,7 @@ if(!match){
     })
 }
 // Generating token-
-const token = await jwt.sign({_id:user._id},process.env.JWT_SECRET_KEY ,{expiresIn:"10d"})
+const token =  jwt.sign({_id:user._id},process.env.JWT_SECRET_KEY ,{expiresIn:"10d"})
 console.log(token);
 res.status(200).send({
     success:true,

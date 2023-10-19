@@ -1,8 +1,8 @@
 import React from 'react';
 import {NavLink,Link} from 'react-router-dom';
-import LocalMallIcon from '@mui/icons-material/LocalMall';
 import {useAuth} from '../../context/authContext.jsx';
 import toast from 'react-hot-toast';
+import SearchInput from '../forms/SearchInput.jsx'
 const Header = () => {
   const[auth,setAuth] = useAuth();
 
@@ -21,8 +21,9 @@ const Header = () => {
       <span className="navbar-toggler-icon"></span>
     </button>
     <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-      <Link to = "/" className="navbar-brand" >ShopNow<LocalMallIcon/></Link>
+      <Link to = "/" className="navbar-brand" ><img src="https://cdn3d.iconscout.com/3d/premium/thumb/shop-now-6333913-5220525.png?f=webp" height="70px" alt="" /></Link>
       <ul className="navbar-nav  ms-auto  mb-2 mb-lg-0">
+        <SearchInput/>
         <li className="nav-item"> 
           <NavLink to = "/" className="nav-link dropdown-item" >Home</NavLink>
         </li>

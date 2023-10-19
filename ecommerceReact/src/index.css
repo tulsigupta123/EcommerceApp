@@ -13,7 +13,6 @@
   box-shadow: 0 8px 6px -6px #808080;
   border-bottom: #808080 !important;
   padding: 1px;
- 
 }
 .navbar-nav{
   text-decoration: none;
@@ -28,11 +27,22 @@
 .active{
  border-bottom: 2px solid black;
 }
-.nav-brand{
-  font-family:'Poppins', sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  word-spacing: 20px;
+.nav-brand img{
+  margin-left: 600px;
+}
+.searchbox{
+  display: flex;
+  /* align-items: center;
+  justify-content: space-around; */
+ margin: 22px auto;
+}
+.searchbox input{
+  height: 30px;
+}
+.searchbox button{
+  height: 30px;
+  padding: 2px 4px;
+  margin-right: 50px;
 }
 /* Footer css */
 .footer{
@@ -84,5 +94,11 @@ margin-top: 20px;
 .product-link{
   list-style: none !important;
   color: #000000 !important;
+}
+.cards{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px auto;
 }
 

@@ -10,6 +10,10 @@ const HomePage = () => {
   const[categories,setCategories] = useState([])
   const[checked,setChecked] = useState([])
   const[radio,setRadio] = useState([])
+  const[total,setTotal] = useState(0)
+  const[page,setPage] = useState(1)
+  const[loading,setLoading] = useState(false)
+
    // Get All Categories-
    const getAllCategories = async()=>{
     try{
@@ -24,18 +28,48 @@ const HomePage = () => {
   }
   useEffect(()=>{
  getAllCategories();
+ getTotal();
   },[])
 
   // Get All Products-
   const getAllProducts = async()=>{
     try{
-    const{data} = await axios.get(`http://localhost:8082/api/v1/product/get-products`)
-    setProducts(data.getProduct)
+      setLoading(true)
+    const{data} = await axios.get(`http://localhost:8082/api/v1/product/product-list/${page}`)
+    setLoading(false)
+    setProducts(data.products)
     }catch(error){
+      setLoading(false)
       console.log(error);
     }
   }
 
+    // Get total count of pages-
+    const getTotal = async()=>{
+      try{
+       const{data} = await axios.get(`http://localhost:8082/api/v1/product/product-count`)
+       setTotal(data?.total)
+      }catch(error){
+        console.log(error);
+      }
+    }
+
+    useEffect(()=>{
+    if(page === 1)return;
+    loadMore();
+    },[page])
+    // Loadmore for more pages-
+    const loadMore = async()=>{
+      try{
+        setLoading(true)
+       const {data} = await axios.get(`http://localhost:8082/api/v1/product/product-list/${page}`)
+       setLoading(false)
+       setProducts([...products,...data?.products])
+      }catch(error){
+        setLoading(false)
+        console.log(error);
+      }
+    }
   // Filter by category-
   const handleFilter = (value,id) => {
   let all = [...checked];
@@ -111,6 +145,16 @@ const HomePage = () => {
           </div>
         </div>
          ))}</div>
+         <div className="m-2 p-3">
+          {products && products.length < total && (
+            <button className = "btn btn-warning" onClick = {(e)=>{
+              e.preventDefault();
+              setPage(page + 1);
+            }}>
+              {loading ? "Loading..." : "Loadmore..."}
+            </button>
+          )}
+         </div>
     </div>
   </div>
     </Layout>
